@@ -1,9 +1,8 @@
 {
-    "name": "piwik/device-detector",
+    "name": "sadikoff/device-detector",
     "type": "library",
     "description": "The Universal Device Detection library, that parses User Agents and detects devices (desktop, tablet, mobile, tv, cars, console, etc.), clients (browsers, media players, mobile apps, feed readers, libraries, etc), operating systems, devices, brands and models.",
     "keywords": ["useragent","parser","devicedetection"],
-    "homepage": "https://matomo.org",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
@@ -12,12 +11,6 @@
             "homepage": "https://matomo.org/team/"
         }
     ],
-    "support": {
-        "forum": "http://forum.matomo.org/",
-        "issues": "https://github.com/matomo-org/device-detector/issues",
-        "wiki": "https://dev.matomo.org/",
-        "source": "https://github.com/matomo-org/piwik"
-    },
     "autoload": {
         "psr-4": { "DeviceDetector\\": "" }
     },
