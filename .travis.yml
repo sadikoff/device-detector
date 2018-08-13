@@ -9,14 +9,12 @@ git:
 matrix:
     include:
         - stage: legacy
-          script: echo 'Legacy'
           php: 5.3
           dist: precise
           env:
             - PHP_COVERALLS_VERSION=v1.1.0
             - PHP_COVERALLS_SCRIPT=coveralls.phar
         - stage: current
-          script: echo 'Current'
           php:
             - 5.6
             - 7.0
@@ -26,7 +24,6 @@ matrix:
             - PHP_COVERALLS_VERSION=v2.1.0
             - PHP_COVERALLS_SCRIPT=php-coveralls.phar
         - stage: future
-          script: echo 'Future'
           php: nightly
           env:
             - PHP_COVERALLS_VERSION=v2.1.0
