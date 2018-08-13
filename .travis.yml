@@ -49,7 +49,7 @@ install:
     - composer install
     - ./vendor/bin/simple-phpunit install
     - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/$PHP_COVERALLS_VERSION/$PHP_COVERALLS_SCRIPT
-    - chmod +x $PHP_COVERALS_SCRIPT
+    - chmod +x $(PHP_COVERALS_SCRIPT)
     - php $PHP_COVERALS_SCRIPT --version
 
 before_script:
