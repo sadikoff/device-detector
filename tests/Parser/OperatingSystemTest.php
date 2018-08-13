@@ -9,7 +9,7 @@ namespace DeviceDetector\Tests\Parser;
 
 use DeviceDetector\Parser\OperatingSystem;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
+use DeviceDetector\Util\Yaml;
 
 class OperatingSystemTest extends TestCase
 {

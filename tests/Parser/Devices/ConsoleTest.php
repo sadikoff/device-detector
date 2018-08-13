@@ -9,7 +9,7 @@ namespace DeviceDetector\Tests\Parser\Device;
 
 use DeviceDetector\Parser\Device\Console;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
+use DeviceDetector\Util\Yaml;
 
 class ConsoleTest extends TestCase
 {

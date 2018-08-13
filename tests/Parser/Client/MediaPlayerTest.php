@@ -9,7 +9,7 @@ namespace DeviceDetector\Tests\Parser\Client;
 
 use DeviceDetector\Parser\Client\MediaPlayer;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
+use DeviceDetector\Util\Yaml;
 
 class MediaPlayerTest extends TestCase
 {

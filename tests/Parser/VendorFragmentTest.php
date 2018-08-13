@@ -9,7 +9,7 @@ namespace DeviceDetector\Tests\Parser;
 
 use DeviceDetector\Parser\VendorFragment;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
+use DeviceDetector\Util\Yaml;
 
 class VendorFragmentTest extends TestCase
 {
@@ -36,7 +36,7 @@ class VendorFragmentTest extends TestCase
     {
         $regexesNotTested = array();
 
-        $vendorRegexes = Yaml::parseFile(realpath(__DIR__ . '/../../regexes/') . DIRECTORY_SEPARATOR . 'vendorfragments.yml');
+        $vendorRegexes = Yaml::parseFile(realpath(__DIR__ . '/../../resources/patterns') . DIRECTORY_SEPARATOR . 'vendorfragment.yml');
 
         foreach ($vendorRegexes as $vendor => $regexes) {
             foreach ($regexes as $regex) {

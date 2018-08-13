@@ -11,7 +11,7 @@ namespace DeviceDetector\Parser;
 use DeviceDetector\Cache\DDCacheInterface;
 use DeviceDetector\Cache\StaticCache;
 use DeviceDetector\DeviceDetector;
-use Symfony\Component\Yaml\Yaml;
+use DeviceDetector\Util\Yaml;
 
 /**
  * Class ParserAbstract

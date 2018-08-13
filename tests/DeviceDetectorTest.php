@@ -11,7 +11,7 @@ use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\DeviceParserAbstract;
 use DeviceDetector\Parser\ParserAbstract;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
+use DeviceDetector\Util\Yaml;
 
 class DeviceDetectorTest extends TestCase
 {
@@ -35,7 +35,7 @@ class DeviceDetectorTest extends TestCase
 
     public function testDevicesYmlFiles()
     {
-        $fixtureFiles = glob(realpath(dirname(__FILE__)) . '/../regexes/device/*.yml');
+        $fixtureFiles = glob(realpath(dirname(__FILE__)) . '/../resources/patterns/device/*.yml');
         foreach ($fixtureFiles AS $file) {
             $ymlData = Yaml::parseFile($file);
             foreach ($ymlData AS $brand => $regex) {

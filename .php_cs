@@ -1,17 +1,22 @@
 <?php
-$finder = Symfony\CS\Finder\DefaultFinder::create();
-$finder->in([
-    __DIR__
-]);
-$finder->exclude('regexes');
-$finder->exclude('Tests');
 
-$config = Symfony\CS\Config\Config::create();
-$config->finder($finder);
-$config->level(Symfony\CS\FixerInterface::PSR2_LEVEL);
-$config->fixers([
-    //for php 5.3
-    'long_array_syntax'
-]);
+if (!file_exists(__DIR__.'/src')) {
+    exit(0);
+}
 
-return $config;
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__.'/src')
+;
+
+return PhpCsFixer\Config::create()
+    ->finder($finder)
+    ->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
+    ->setRules(array(
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        'array_syntax' => ['syntax' => 'long'],
+        'protected_to_private' => false,
+        'semicolon_after_instruction' => false,
+    ))
+    ->setRiskyAllowed(true)
+;
