@@ -16,4 +16,10 @@
             <directory>./src/</directory>
         </whitelist>
     </filter>
+
+    <logging>
+        <log type="coverage-clover" target="/tmp/coverage.xml"/>
+        <log type="coverage-php" target="/tmp/coverage.serialized"/>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+    </logging>
 </phpunit>
