@@ -27,14 +27,14 @@ before_script:
   - composer install
   - ./vendor/bin/simple-phpunit install
   - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
-  - chmod +x coveralls.phar
-  - php coveralls.phar --version
+  - chmod +x php-coveralls.phar
+  - php php-coveralls.phar --version
 
 script:
   - ./vendor/bin/simple-phpunit
 
 after_script:
-  - php coveralls.phar -v
+  - php php-coveralls.phar -v
 
 #notifications:
 #  slack:
