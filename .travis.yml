@@ -39,6 +39,10 @@ services:
     - memcached
 
 before_install:
+    - |
+    # Disable Xdebug extension ...
+    sed -i'' -e 's/^/;/g' ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || true
+    php -v | grep -i xdebug || true
     - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
