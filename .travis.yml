@@ -14,18 +14,17 @@ matrix:
           env:
             - PHP_COVERALLS_LINK=https://github.com/php-coveralls/php-coveralls/releases/download/v1.1.0/coveralls.phar
         - stage: current
-          php:
-            - 5.6
-            - 7.0
-            - 7.1
-            - 7.2
-          env:
-            - PHP_COVERALLS_LINK=https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+          php: 5.6
+        - stage: current
+          php: 7.0
+        - stage: current
+          php: 7.1
+        - stage: current
+          php: 7.2
         - stage: future
           php: nightly
-          env:
-            - PHP_COVERALLS_LINK=https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
-
+    allow_failures:
+        - php: nightly
 cache:
     directories:
         - $HOME/.composer/cache/files
@@ -34,12 +33,12 @@ cache:
 env:
     global:
         - SYMFONY_PHPUNIT_DIR=.phpunit
+        - PHP_COVERALLS_LINK=https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
 
 services:
     - memcached
 
 before_install:
-    - phpenv config-rm xdebug.ini
     - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
