@@ -10,21 +10,21 @@ matrix:
     include:
     - php: 5.3
       dist: precise
-      env: PHP_COVERALS="v1.1.0"
+      env: PHP_COVERALS_VERSION="v1.1.0" PHP_COVERALS_SCRIPT="coveralls.phar"
     - php: 5.4
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
     - php: 5.5
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
     - php: 5.6
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
     - php: 7.0
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
     - php: 7.1
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
     - php: 7.2
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
     - php: nightly
-      env: PHP_COVERALS="v2.1.0"
+      env: PHP_COVERALS_VERSION="v2.1.0" PHP_COVERALS_SCRIPT="php-coveralls.phar"
 
 cache:
     directories:
@@ -48,9 +48,9 @@ before_install:
 install:
     - composer install
     - ./vendor/bin/simple-phpunit install
-    - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/$PHP_COVERALS/php-coveralls.phar
-    - chmod +x php-coveralls.phar
-    - php php-coveralls.phar --version
+    - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/$PHP_COVERALS_VERSION/$PHP_COVERALS_SCRIPT
+    - chmod +x $PHP_COVERALS_SCRIPT
+    - php $PHP_COVERALS_SCRIPT --version
 
 before_script:
     - composer require doctrine/cache
@@ -59,7 +59,7 @@ script:
   - ./vendor/bin/simple-phpunit
 
 after_script:
-  - php php-coveralls.phar -v
+  - php $PHP_COVERALS_SCRIPT -v
 
 #notifications:
 #  slack:
