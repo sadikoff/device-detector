@@ -32,7 +32,7 @@ before_install:
     - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
-    if [[ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ]]; then export PHP_COVERALS="v1.1.0"; else export PHP_COVERALS="v2.1.0"; fi
+    - if [[ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ]]; then export PHP_COVERALS="v1.1.0"; else export PHP_COVERALS="v2.1.0"; fi
     - composer install
     - ./vendor/bin/simple-phpunit install
     - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/$(PHP_COVERALS)/php-coveralls.phar
