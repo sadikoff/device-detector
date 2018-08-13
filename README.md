@@ -1,18 +1,17 @@
 DeviceDetector
 ==============
 
-[![Latest Stable Version](https://poser.pugx.org/piwik/device-detector/v/stable)](https://packagist.org/packages/piwik/device-detector)
-[![Latest Unstable Version](https://poser.pugx.org/piwik/device-detector/v/unstable)](https://packagist.org/packages/piwik/device-detector)
-[![Total Downloads](https://poser.pugx.org/piwik/device-detector/downloads)](https://packagist.org/packages/piwik/device-detector)
-[![License](https://poser.pugx.org/piwik/device-detector/license)](https://packagist.org/packages/piwik/device-detector)
+[![Latest Stable Version](https://poser.pugx.org/sadikoff/device-detector/v/stable)](https://packagist.org/packages/sadikoff/device-detector)
+[![Latest Unstable Version](https://poser.pugx.org/sadikoff/device-detector/v/unstable)](https://packagist.org/packages/sadikoff/device-detector)
+[![Total Downloads](https://poser.pugx.org/sadikoff/device-detector/downloads)](https://packagist.org/packages/sadikoff/device-detector)
+[![License](https://poser.pugx.org/sadikoff/device-detector/license)](https://packagist.org/packages/sadikoff/device-detector)
 
 ## Code Status
 
-[![Build Status](https://travis-ci.org/matomo-org/device-detector.svg?branch=master)](https://travis-ci.org/matomo-org/device-detector)
-[![Code Coverage](https://coveralls.io/repos/piwik/device-detector/badge.png)](https://coveralls.io/r/piwik/device-detector)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/matomo-org/device-detector.svg)](http://isitmaintained.com/project/matomo-org/device-detector "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/matomo-org/device-detector.svg)](http://isitmaintained.com/project/matomo-org/device-detector "Percentage of issues still open")
-[![Dependency Status](https://gemnasium.com/piwik/device-detector.svg)](https://gemnasium.com/piwik/device-detector)
+[![Build Status](https://travis-ci.org/sadikoff/device-detector.svg?branch=master)](https://travis-ci.org/sadikoff/device-detector)
+[![Coverage Status](https://coveralls.io/repos/github/sadikoff/device-detector/badge.svg?branch=master)](https://coveralls.io/github/sadikoff/device-detector?branch=master)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/sadikoff/device-detector.svg)](http://isitmaintained.com/project/sadikoff/device-detector "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/sadikoff/device-detector.svg)](http://isitmaintained.com/project/sadikoff/device-detector "Percentage of issues still open")
 
 ## Description
 
