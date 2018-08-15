@@ -5,9 +5,9 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Parser\Device;
+namespace Koff\DeviceDetector\Tests\Parser\Device;
 
-use DeviceDetector\Parser\Device\HbbTv;
+use Koff\DeviceDetector\Parser\Device\HbbTv;
 use PHPUnit\Framework\TestCase;
 
 class HbbTvTest extends TestCase

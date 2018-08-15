@@ -5,13 +5,13 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests;
+namespace Koff\DeviceDetector\Tests;
 
-use DeviceDetector\DeviceDetector;
-use DeviceDetector\Parser\Device\DeviceParserAbstract;
-use DeviceDetector\Parser\ParserAbstract;
+use Koff\DeviceDetector\DeviceDetector;
+use Koff\DeviceDetector\Parser\Device\DeviceParserAbstract;
+use Koff\DeviceDetector\Parser\ParserAbstract;
 use PHPUnit\Framework\TestCase;
-use DeviceDetector\Util\Yaml;
+use Koff\DeviceDetector\Util\Yaml;
 
 class DeviceDetectorTest extends TestCase
 {

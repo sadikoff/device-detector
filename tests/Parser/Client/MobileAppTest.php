@@ -5,11 +5,11 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Parser\Client;
+namespace Koff\DeviceDetector\Tests\Parser\Client;
 
-use DeviceDetector\Parser\Client\MobileApp;
+use Koff\DeviceDetector\Parser\Client\MobileApp;
 use PHPUnit\Framework\TestCase;
-use DeviceDetector\Util\Yaml;
+use Koff\DeviceDetector\Util\Yaml;
 
 class MobileAppTest extends TestCase
 {

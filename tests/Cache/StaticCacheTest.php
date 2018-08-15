@@ -5,9 +5,9 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Cache;
+namespace Koff\DeviceDetector\Tests\Cache;
 
-use DeviceDetector\Cache\StaticCache;
+use Koff\DeviceDetector\Cache\StaticCache;
 use PHPUnit\Framework\TestCase;
 
 class StaticCacheTests extends TestCase

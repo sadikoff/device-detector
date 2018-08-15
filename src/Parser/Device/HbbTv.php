@@ -1,18 +1,18 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Device;
+
+namespace Koff\DeviceDetector\Parser\Device;
 
 /**
- * Class HbbTv
+ * Class HbbTv.
  *
  * Device parser for hbbtv detection
- *
- * @package DeviceDetector\Parser\Device
  */
 class HbbTv extends DeviceParserAbstract
 {
@@ -20,7 +20,7 @@ class HbbTv extends DeviceParserAbstract
     protected $parserName = 'tv';
 
     /**
-     * Parses the current UA and checks whether it contains HbbTv information
+     * Parses the current UA and checks whether it contains HbbTv information.
      *
      * @see televisions.yml for list of detected televisions
      */
@@ -40,7 +40,7 @@ class HbbTv extends DeviceParserAbstract
     }
 
     /**
-     * Returns if the parsed UA was identified as a HbbTV device
+     * Returns if the parsed UA was identified as a HbbTV device.
      *
      * @return bool
      */
@@ -48,6 +48,7 @@ class HbbTv extends DeviceParserAbstract
     {
         $regex = 'HbbTV/([1-9]{1}(?:\.[0-9]{1}){1,2})';
         $match = $this->matchUserAgent($regex);
+
         return $match ? $match[1] : false;
     }
 }

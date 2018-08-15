@@ -1,21 +1,21 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser;
+
+namespace Koff\DeviceDetector\Parser;
 
 /**
- * Class OperatingSystem
+ * Class OperatingSystem.
  *
  * Parses the useragent for operating system information
  *
  * Detected operating systems can be found in self::$operatingSystems and /regexes/oss.yml
  * This class also defined some operating system families and methods to get the family for a specific os
- *
- * @package DeviceDetector\Parser
  */
 class OperatingSystem extends ParserAbstract
 {
@@ -23,7 +23,7 @@ class OperatingSystem extends ParserAbstract
     protected $parserName = 'os';
 
     /**
-     * Known operating systems mapped to their internal short codes
+     * Known operating systems mapped to their internal short codes.
      *
      * @var array
      */
@@ -107,42 +107,42 @@ class OperatingSystem extends ParserAbstract
         'YNS' => 'YunOs',
         'IOS' => 'iOS',
         'POS' => 'palmOS',
-        'WOS' => 'webOS'
+        'WOS' => 'webOS',
     );
 
     /**
-     * Operating system families mapped to the short codes of the associated operating systems
+     * Operating system families mapped to the short codes of the associated operating systems.
      *
      * @var array
      */
     protected static $osFamilies = array(
-        'Android'               => array('AND', 'CYN', 'FIR', 'REM', 'RZD', 'MLD', 'MCD', 'YNS'),
-        'AmigaOS'               => array('AMG', 'MOR'),
-        'Apple TV'              => array('ATV'),
-        'BlackBerry'            => array('BLB', 'QNX'),
-        'Brew'                  => array('BMP'),
-        'BeOS'                  => array('BEO', 'HAI'),
-        'Chrome OS'             => array('COS'),
-        'Firefox OS'            => array('FOS', 'KOS'),
-        'Gaming Console'        => array('WII', 'PS3'),
-        'Google TV'             => array('GTV'),
-        'IBM'                   => array('OS2'),
-        'iOS'                   => array('IOS'),
-        'RISC OS'               => array('ROS'),
-        'GNU/Linux'             => array('LIN', 'ARL', 'DEB', 'KNO', 'MIN', 'UBT', 'KBT', 'XBT', 'LBT', 'FED', 'RHT', 'VLN', 'MDR', 'GNT', 'SAB', 'SLW', 'SSE', 'CES', 'BTR', 'SAF'),
-        'Mac'                   => array('MAC'),
+        'Android' => array('AND', 'CYN', 'FIR', 'REM', 'RZD', 'MLD', 'MCD', 'YNS'),
+        'AmigaOS' => array('AMG', 'MOR'),
+        'Apple TV' => array('ATV'),
+        'BlackBerry' => array('BLB', 'QNX'),
+        'Brew' => array('BMP'),
+        'BeOS' => array('BEO', 'HAI'),
+        'Chrome OS' => array('COS'),
+        'Firefox OS' => array('FOS', 'KOS'),
+        'Gaming Console' => array('WII', 'PS3'),
+        'Google TV' => array('GTV'),
+        'IBM' => array('OS2'),
+        'iOS' => array('IOS'),
+        'RISC OS' => array('ROS'),
+        'GNU/Linux' => array('LIN', 'ARL', 'DEB', 'KNO', 'MIN', 'UBT', 'KBT', 'XBT', 'LBT', 'FED', 'RHT', 'VLN', 'MDR', 'GNT', 'SAB', 'SLW', 'SSE', 'CES', 'BTR', 'SAF'),
+        'Mac' => array('MAC'),
         'Mobile Gaming Console' => array('PSP', 'NDS', 'XBX'),
-        'Real-time OS'          => array('MTK', 'TDX'),
-        'Other Mobile'          => array('WOS', 'POS', 'SBA', 'TIZ', 'SMG', 'MAE'),
-        'Symbian'               => array('SYM', 'SYS', 'SY3', 'S60', 'S40'),
-        'Unix'                  => array('SOS', 'AIX', 'HPX', 'BSD', 'NBS', 'OBS', 'DFB', 'SYL', 'IRI', 'T64', 'INF'),
-        'WebTV'                 => array('WTV'),
-        'Windows'               => array('WIN'),
-        'Windows Mobile'        => array('WPH', 'WMO', 'WCE', 'WRT', 'WIO')
+        'Real-time OS' => array('MTK', 'TDX'),
+        'Other Mobile' => array('WOS', 'POS', 'SBA', 'TIZ', 'SMG', 'MAE'),
+        'Symbian' => array('SYM', 'SYS', 'SY3', 'S60', 'S40'),
+        'Unix' => array('SOS', 'AIX', 'HPX', 'BSD', 'NBS', 'OBS', 'DFB', 'SYL', 'IRI', 'T64', 'INF'),
+        'WebTV' => array('WTV'),
+        'Windows' => array('WIN'),
+        'Windows Mobile' => array('WPH', 'WMO', 'WCE', 'WRT', 'WIO'),
     );
 
     /**
-     * Returns all available operating systems
+     * Returns all available operating systems.
      *
      * @return array
      */
@@ -152,7 +152,7 @@ class OperatingSystem extends ParserAbstract
     }
 
     /**
-     * Returns all available operating system families
+     * Returns all available operating system families.
      *
      * @return array
      */
@@ -176,21 +176,21 @@ class OperatingSystem extends ParserAbstract
             return $return;
         }
 
-        $name  = $this->buildByMatch($osRegex['name'], $matches);
+        $name = $this->buildByMatch($osRegex['name'], $matches);
         $short = 'UNK';
 
         foreach (self::$operatingSystems as $osShort => $osName) {
             if (strtolower($name) == strtolower($osName)) {
-                $name  = $osName;
+                $name = $osName;
                 $short = $osShort;
             }
         }
 
         $return = array(
-            'name'       => $name,
+            'name' => $name,
             'short_name' => $short,
-            'version'    => $this->buildVersion($osRegex['version'], $matches),
-            'platform'   => $this->parsePlatform()
+            'version' => $this->buildVersion($osRegex['version'], $matches),
+            'platform' => $this->parsePlatform(),
         );
 
         if (in_array($return['name'], self::$operatingSystems)) {
@@ -213,11 +213,11 @@ class OperatingSystem extends ParserAbstract
         return '';
     }
 
-
     /**
-     * Returns the operating system family for the given operating system
+     * Returns the operating system family for the given operating system.
      *
      * @param $osLabel
+     *
      * @return bool|string If false, "Unknown"
      */
     public static function getOsFamily($osLabel)
@@ -227,11 +227,12 @@ class OperatingSystem extends ParserAbstract
                 return $family;
             }
         }
+
         return false;
     }
 
     /**
-     * Returns the full name for the given short name
+     * Returns the full name for the given short name.
      *
      * @param      $os
      * @param bool $ver
@@ -242,8 +243,10 @@ class OperatingSystem extends ParserAbstract
     {
         if (array_key_exists($os, self::$operatingSystems)) {
             $osFullName = self::$operatingSystems[$os];
-            return trim($osFullName . " " . $ver);
+
+            return trim($osFullName.' '.$ver);
         }
+
         return false;
     }
 }

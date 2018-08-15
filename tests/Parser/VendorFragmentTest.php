@@ -5,11 +5,11 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Parser;
+namespace Koff\DeviceDetector\Tests\Parser;
 
-use DeviceDetector\Parser\VendorFragment;
+use Koff\DeviceDetector\Parser\VendorFragment;
 use PHPUnit\Framework\TestCase;
-use DeviceDetector\Util\Yaml;
+use Koff\DeviceDetector\Util\Yaml;
 
 class VendorFragmentTest extends TestCase
 {

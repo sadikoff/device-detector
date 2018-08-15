@@ -1,7 +1,8 @@
 <?php
 
-namespace DeviceDetector\Util;
+namespace Koff\DeviceDetector\Util;
 
+use Koff\DeviceDetector\Exception\ResourceNotFoundException;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 /**
@@ -10,10 +11,21 @@ use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 final class Yaml
 {
     /**
+     * @param $content
+     *
+     * @return mixed
+     */
+    public static function parse($content)
+    {
+        return SymfonyYaml::parse($content);
+    }
+
+    /**
      * @param $filename
      *
      * @return mixed
-     * @throws \Exception
+     *
+     * @throws ResourceNotFoundException
      */
     public static function parseFile($filename)
     {
@@ -23,6 +35,6 @@ final class Yaml
             return SymfonyYaml::parse($content);
         }
 
-        throw new \Exception(sprintf('File "%s" not found', $filename));
+        throw new ResourceNotFoundException(sprintf('File "%s" not found', $filename));
     }
 }

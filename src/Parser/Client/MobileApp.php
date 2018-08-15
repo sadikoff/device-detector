@@ -1,18 +1,18 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Client;
+
+namespace Koff\DeviceDetector\Parser\Client;
 
 /**
- * Class MobileApp
+ * Class MobileApp.
  *
  * Client parser for mobile app detection
- *
- * @package DeviceDetector\Parser\Client
  */
 class MobileApp extends ClientParserAbstract
 {

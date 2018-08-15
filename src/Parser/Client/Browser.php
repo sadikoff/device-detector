@@ -1,20 +1,20 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Client;
 
-use DeviceDetector\Parser\Client\Browser\Engine;
+namespace Koff\DeviceDetector\Parser\Client;
+
+use Koff\DeviceDetector\Parser\Client\Browser\Engine;
 
 /**
- * Class Browser
+ * Class Browser.
  *
  * Client parser for browser detection
- *
- * @package DeviceDetector\Parser\Client
  */
 class Browser extends ClientParserAbstract
 {
@@ -22,7 +22,7 @@ class Browser extends ClientParserAbstract
     protected $parserName = 'browser';
 
     /**
-     * Known browsers mapped to their internal short codes
+     * Known browsers mapped to their internal short codes.
      *
      * @var array
      */
@@ -186,42 +186,43 @@ class Browser extends ClientParserAbstract
         'WO' => 'wOSBrowser',
         'WT' => 'WeTab Browser',
         'YA' => 'Yandex Browser',
-        'XI' => 'Xiino'
+        'XI' => 'Xiino',
     );
 
     /**
-     * Browser families mapped to the short codes of the associated browsers
+     * Browser families mapped to the short codes of the associated browsers.
      *
      * @var array
      */
     protected static $browserFamilies = array(
-        'Android Browser'    => array('AN', 'MU'),
+        'Android Browser' => array('AN', 'MU'),
         'BlackBerry Browser' => array('BB'),
-        'Baidu'              => array('BD', 'BS'),
-        'Amiga'              => array('AV', 'AW'),
-        'Chrome'             => array('CH', 'BR', 'CC', 'CD', 'CM', 'CI', 'CF', 'CN', 'CR', 'CP', 'IR', 'RM', 'AO', 'TS', 'VI', 'PT', 'AS'),
-        'Firefox'            => array('FF', 'FE', 'FM', 'SX', 'FB', 'PX', 'MB', 'EI', 'WF', 'CU'),
-        'Internet Explorer'  => array('IE', 'IM', 'PS'),
-        'Konqueror'          => array('KO'),
-        'NetFront'           => array('NF'),
-        'NetSurf'            => array('NE'),
-        'Nokia Browser'      => array('NB', 'NO', 'NV', 'DO'),
-        'Opera'              => array('OP', 'OM', 'OI', 'ON'),
-        'Safari'             => array('SF', 'MF'),
-        'Sailfish Browser'   => array('SA'),
+        'Baidu' => array('BD', 'BS'),
+        'Amiga' => array('AV', 'AW'),
+        'Chrome' => array('CH', 'BR', 'CC', 'CD', 'CM', 'CI', 'CF', 'CN', 'CR', 'CP', 'IR', 'RM', 'AO', 'TS', 'VI', 'PT', 'AS'),
+        'Firefox' => array('FF', 'FE', 'FM', 'SX', 'FB', 'PX', 'MB', 'EI', 'WF', 'CU'),
+        'Internet Explorer' => array('IE', 'IM', 'PS'),
+        'Konqueror' => array('KO'),
+        'NetFront' => array('NF'),
+        'NetSurf' => array('NE'),
+        'Nokia Browser' => array('NB', 'NO', 'NV', 'DO'),
+        'Opera' => array('OP', 'OM', 'OI', 'ON'),
+        'Safari' => array('SF', 'MF'),
+        'Sailfish Browser' => array('SA'),
     );
 
     /**
-     * Browsers that are available for mobile devices only
+     * Browsers that are available for mobile devices only.
      *
      * @var array
      */
     protected static $mobileOnlyBrowsers = array(
-        '36', 'PU', 'SK', 'MF', 'OI', 'OM', 'DB', 'ST', 'BL', 'IV', 'FM', 'C1', 'AL', 'SA'
+        '36', 'PU', 'SK', 'MF', 'OI', 'OM', 'DB', 'ST', 'BL', 'IV', 'FM', 'C1', 'AL', 'SA',
     );
 
     /**
-     * Returns list of all available browsers
+     * Returns list of all available browsers.
+     *
      * @return array
      */
     public static function getAvailableBrowsers()
@@ -230,7 +231,8 @@ class Browser extends ClientParserAbstract
     }
 
     /**
-     * Returns list of all available browser families
+     * Returns list of all available browser families.
+     *
      * @return array
      */
     public static function getAvailableBrowserFamilies()
@@ -238,9 +240,9 @@ class Browser extends ClientParserAbstract
         return self::$browserFamilies;
     }
 
-
     /**
      * @param string $browserLabel
+     *
      * @return bool|string If false, "Unknown"
      */
     public static function getBrowserFamily($browserLabel)
@@ -250,13 +252,15 @@ class Browser extends ClientParserAbstract
                 return $browserFamily;
             }
         }
+
         return false;
     }
 
     /**
-     * Returns if the given browser is mobile only
+     * Returns if the given browser is mobile only.
      *
-     * @param string $browser  Label or name of browser
+     * @param string $browser Label or name of browser
+     *
      * @return bool
      */
     public static function isMobileOnlyBrowser($browser)
@@ -264,6 +268,10 @@ class Browser extends ClientParserAbstract
         return in_array($browser, self::$mobileOnlyBrowsers) || (in_array($browser, self::$availableBrowsers) && in_array(array_search($browser, self::$availableBrowsers), self::$mobileOnlyBrowsers));
     }
 
+    /**
+     * @return array|null
+     * @throws \Koff\DeviceDetector\Exception\ResourceNotFoundException
+     */
     public function parse()
     {
         foreach ($this->getRegexes() as $regex) {
@@ -277,19 +285,20 @@ class Browser extends ClientParserAbstract
             return null;
         }
 
-        $name  = $this->buildByMatch($regex['name'], $matches);
+        $name = $this->buildByMatch($regex['name'], $matches);
 
         foreach (self::getAvailableBrowsers() as $browserShort => $browserName) {
             if (strtolower($name) == strtolower($browserName)) {
                 $version = (string) $this->buildVersion($regex['version'], $matches);
                 $engine = $this->buildEngine(isset($regex['engine']) ? $regex['engine'] : array(), $version);
                 $engineVersion = $this->buildEngineVersion($engine);
+
                 return array(
-                    'type'           => 'browser',
-                    'name'           => $browserName,
-                    'short_name'     => $browserShort,
-                    'version'        => $version,
-                    'engine'         => $engine,
+                    'type' => 'browser',
+                    'name' => $browserName,
+                    'short_name' => $browserShort,
+                    'version' => $version,
+                    'engine' => $engine,
                     'engine_version' => $engineVersion,
                 );
             }

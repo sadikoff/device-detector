@@ -1,24 +1,29 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Device;
+
+namespace Koff\DeviceDetector\Parser\Device;
 
 /**
- * Class Console
+ * Class Console.
  *
  * Device parser for console detection
- *
- * @package DeviceDetector\Parser\Device
  */
 class Console extends DeviceParserAbstract
 {
     protected $fixtureFile = 'regexes/device/consoles.yml';
-    protected $parserName  = 'console';
+    protected $parserName = 'console';
 
+    /**
+     * @return bool
+     *
+     * @throws \Exception
+     */
     public function parse()
     {
         if (!$this->preMatchOverall()) {

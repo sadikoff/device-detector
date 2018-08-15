@@ -5,9 +5,9 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Parser\Device;
+namespace Koff\DeviceDetector\Tests\Parser\Device;
 
-use DeviceDetector\Parser\Device\DeviceParserAbstract;
+use Koff\DeviceDetector\Parser\Device\DeviceParserAbstract;
 use PHPUnit\Framework\TestCase;
 
 class DeviceParserAbstractTest extends TestCase

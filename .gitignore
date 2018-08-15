@@ -1,7 +1,4 @@
-.idea/*
 vendor/*
+phpunit.xml
 composer.lock
-composer.phar
-.buildpath
-.project
-.settings
+.php_cs.cache

@@ -1,13 +1,15 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Client;
 
-use DeviceDetector\Parser\ParserAbstract;
+namespace Koff\DeviceDetector\Parser\Client;
+
+use Koff\DeviceDetector\Parser\ParserAbstract;
 
 abstract class ClientParserAbstract extends ParserAbstract
 {
@@ -15,7 +17,7 @@ abstract class ClientParserAbstract extends ParserAbstract
     protected $parserName = '';
 
     /**
-     * Parses the current UA and checks whether it contains any client information
+     * Parses the current UA and checks whether it contains any client information.
      *
      * @see $fixtureFile for file with list of detected clients
      *
@@ -37,9 +39,9 @@ abstract class ClientParserAbstract extends ParserAbstract
 
                 if ($matches) {
                     $result = array(
-                        'type'       => $this->parserName,
-                        'name'       => $this->buildByMatch($regex['name'], $matches),
-                        'version'    => $this->buildVersion($regex['version'], $matches)
+                        'type' => $this->parserName,
+                        'name' => $this->buildByMatch($regex['name'], $matches),
+                        'version' => $this->buildVersion($regex['version'], $matches),
                     );
                     break;
                 }
@@ -50,7 +52,7 @@ abstract class ClientParserAbstract extends ParserAbstract
     }
 
     /**
-     * Returns all names defined in the regexes
+     * Returns all names defined in the regexes.
      *
      * Attention: This method might not return all names of detected clients
      *
@@ -62,7 +64,7 @@ abstract class ClientParserAbstract extends ParserAbstract
         $regexes = $instance->getRegexes();
         $names = array();
         foreach ($regexes as $regex) {
-            if ($regex['name'] != '$1') {
+            if ('$1' != $regex['name']) {
                 $names[] = $regex['name'];
             }
         }

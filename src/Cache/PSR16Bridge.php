@@ -1,12 +1,11 @@
 <?php
 
-namespace DeviceDetector\Cache;
+namespace Koff\DeviceDetector\Cache;
 
 use Psr\SimpleCache\CacheInterface;
 
 class PSR16Bridge implements DDCacheInterface
 {
-
     /**
      * @var CacheInterface
      */
@@ -23,7 +22,11 @@ class PSR16Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * @param $id
+     *
+     * @return mixed
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function fetch($id)
     {
@@ -31,7 +34,11 @@ class PSR16Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * @param $id
+     *
+     * @return bool
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function contains($id)
     {
@@ -39,7 +46,13 @@ class PSR16Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * @param     $id
+     * @param     $data
+     * @param int $lifeTime
+     *
+     * @return bool
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function save($id, $data, $lifeTime = 0)
     {
@@ -47,7 +60,11 @@ class PSR16Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * @param $id
+     *
+     * @return bool
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function delete($id)
     {
@@ -55,7 +72,7 @@ class PSR16Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * @return bool
      */
     public function flushAll()
     {

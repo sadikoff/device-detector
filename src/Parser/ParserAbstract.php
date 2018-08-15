@@ -1,55 +1,55 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link    http://piwik.org
+ * @see    http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
 
-namespace DeviceDetector\Parser;
+namespace Koff\DeviceDetector\Parser;
 
-use DeviceDetector\Cache\DDCacheInterface;
-use DeviceDetector\Cache\StaticCache;
-use DeviceDetector\DeviceDetector;
-use DeviceDetector\Util\Yaml;
+use Koff\DeviceDetector\Cache\DDCacheInterface;
+use Koff\DeviceDetector\Cache\StaticCache;
+use Koff\DeviceDetector\DeviceDetector;
+use Koff\DeviceDetector\Exception\ResourceNotFoundException;
+use Koff\DeviceDetector\Util\Yaml;
 
 /**
- * Class ParserAbstract
- *
- * @package DeviceDetector\Parser
+ * Class ParserAbstract.
  */
 abstract class ParserAbstract
 {
     /**
-     * Holds the path to the yml file containing regexes
+     * Holds the path to the yml file containing regexes.
      *
      * @var string
      */
     protected $fixtureFile;
     /**
      * Holds the internal name of the parser
-     * Used for caching
+     * Used for caching.
      *
      * @var string
      */
     protected $parserName;
 
     /**
-     * Holds the user agent the should be parsed
+     * Holds the user agent the should be parsed.
      *
      * @var string
      */
     protected $userAgent;
 
     /**
-     * Holds an array with method that should be available global
+     * Holds an array with method that should be available global.
      *
      * @var array
      */
     protected $globalMethods;
 
     /**
-     * Holds an array with regexes to parse, if already loaded
+     * Holds an array with regexes to parse, if already loaded.
      *
      * @var array
      */
@@ -57,7 +57,7 @@ abstract class ParserAbstract
 
     /**
      * Indicates how deep versioning will be detected
-     * if $maxMinorParts is 0 only the major version will be returned
+     * if $maxMinorParts is 0 only the major version will be returned.
      *
      * @var int
      */
@@ -67,7 +67,6 @@ abstract class ParserAbstract
      * Versioning constant used to set max versioning to major version only
      * Version examples are: 3, 5, 6, 200, 123, ...
      */
-
     const VERSION_TRUNCATION_MAJOR = 0;
 
     /**
@@ -89,7 +88,7 @@ abstract class ParserAbstract
     const VERSION_TRUNCATION_BUILD = 3;
 
     /**
-     * Versioning constant used to set versioning to unlimited (no truncation)
+     * Versioning constant used to set versioning to unlimited (no truncation).
      */
     const VERSION_TRUNCATION_NONE = null;
 
@@ -106,7 +105,7 @@ abstract class ParserAbstract
     }
 
     /**
-     * Set how DeviceDetector should return versions
+     * Set how DeviceDetector should return versions.
      *
      * @param int|null $type Any of the VERSION_TRUNCATION_* constants
      */
@@ -127,7 +126,7 @@ abstract class ParserAbstract
     }
 
     /**
-     * Sets the user agent to parse
+     * Sets the user agent to parse.
      *
      * @param string $ua user agent
      */
@@ -137,7 +136,7 @@ abstract class ParserAbstract
     }
 
     /**
-     * Returns the internal name of the parser
+     * Returns the internal name of the parser.
      *
      * @return string
      */
@@ -147,15 +146,16 @@ abstract class ParserAbstract
     }
 
     /**
-     * Returns the result of the parsed yml file defined in $fixtureFile
+     * Returns the result of the parsed yml file defined in $fixtureFile.
      *
      * @return array
+     * @throws \Koff\DeviceDetector\Exception\ResourceNotFoundException
      */
     protected function getRegexes()
     {
         if (empty($this->regexList)) {
-            $cacheKey        = 'DeviceDetector-'.DeviceDetector::VERSION.'regexes-'.$this->getName();
-            $cacheKey        = preg_replace('/([^a-z0-9_-]+)/i', '', $cacheKey);
+            $cacheKey = 'DeviceDetector-'.DeviceDetector::VERSION.'regexes-'.$this->getName();
+            $cacheKey = preg_replace('/([^a-z0-9_-]+)/i', '', $cacheKey);
             $this->regexList = $this->getCache()->fetch($cacheKey);
             if (empty($this->regexList)) {
                 $this->regexList = Yaml::parseFile($this->getFixtureFile());
@@ -169,24 +169,24 @@ abstract class ParserAbstract
     /**
      * @return string
      *
-     * @throws \Exception
+     * @throws ResourceNotFoundException
      */
     protected function getFixtureFile()
     {
         $parserClassName = get_class($this);
-        $fixtureFile     = strtolower(str_replace(array('DeviceDetector\\Parser\\', '\\'), array('', DIRECTORY_SEPARATOR), $parserClassName));
+        $fixtureFile = strtolower(str_replace(array('Koff\\DeviceDetector\\Parser\\', '\\'), array('', \DIRECTORY_SEPARATOR), $parserClassName));
 
-        $patternFile = realpath(sprintf('%s/../../resources/patterns/%s.yml', dirname(__FILE__), $fixtureFile));
+        $patternFile = realpath(sprintf('%s/../../resources/patterns/%s.yml', __DIR__, $fixtureFile));
 
         if (false === $patternFile) {
-            throw new \Exception(sprintf('Cannot load pattern file "%s.yml"', $fixtureFile));
+            throw new ResourceNotFoundException(sprintf('Cannot load pattern file "%s.yml"', $fixtureFile));
         }
 
         return $patternFile;
     }
 
     /**
-     * Matches the useragent against the given regex
+     * Matches the useragent against the given regex.
      *
      * @param $regex
      *
@@ -212,20 +212,20 @@ abstract class ParserAbstract
      */
     protected function buildByMatch($item, $matches)
     {
-        for ($nb = 1; $nb <= 3; $nb++) {
-            if (strpos($item, '$'.$nb) === false) {
+        for ($nb = 1; $nb <= 3; ++$nb) {
+            if (false === strpos($item, '$'.$nb)) {
                 continue;
             }
 
             $replace = isset($matches[$nb]) ? $matches[$nb] : '';
-            $item    = trim(str_replace('$'.$nb, $replace, $item));
+            $item = trim(str_replace('$'.$nb, $replace, $item));
         }
 
         return $item;
     }
 
     /**
-     * Builds the version with the given $versionString and $matches
+     * Builds the version with the given $versionString and $matches.
      *
      * Example:
      * $versionString = 'v$2'
@@ -242,8 +242,8 @@ abstract class ParserAbstract
         $versionString = $this->buildByMatch($versionString, $matches);
         $versionString = str_replace('_', '.', $versionString);
         if (null !== self::$maxMinorParts && substr_count($versionString, '.') > self::$maxMinorParts) {
-            $versionParts  = explode('.', $versionString);
-            $versionParts  = array_slice($versionParts, 0, 1 + self::$maxMinorParts);
+            $versionParts = explode('.', $versionString);
+            $versionParts = array_slice($versionParts, 0, 1 + self::$maxMinorParts);
             $versionString = implode('.', $versionParts);
         }
 
@@ -251,7 +251,7 @@ abstract class ParserAbstract
     }
 
     /**
-     * Tests the useragent against a combination of all regexes
+     * Tests the useragent against a combination of all regexes.
      *
      * All regexes returned by getRegexes() will be reversed and concated with '|'
      * Afterwards the big regex will be tested against the user agent
@@ -278,7 +278,7 @@ abstract class ParserAbstract
             $overAllMatch = array_reduce(
                 array_reverse($regexes),
                 function ($val1, $val2) {
-                    if ( ! empty($val1)) {
+                    if (!empty($val1)) {
                         return $val1.'|'.$val2['regex'];
                     } else {
                         return $val2['regex'];
@@ -292,7 +292,7 @@ abstract class ParserAbstract
     }
 
     /**
-     * Sets the Cache class
+     * Sets the Cache class.
      *
      * @param DDCacheInterface|\Doctrine\Common\Cache\CacheProvider $cache
      *
@@ -311,13 +311,13 @@ abstract class ParserAbstract
     }
 
     /**
-     * Returns Cache object
+     * Returns Cache object.
      *
      * @return DDCacheInterface|\Doctrine\Common\Cache\CacheProvider
      */
     public function getCache()
     {
-        if ( ! empty($this->cache)) {
+        if (!empty($this->cache)) {
             return $this->cache;
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace DeviceDetector\Cache;
+namespace Koff\DeviceDetector\Cache;
 
 interface DDCacheInterface
 {

@@ -1,5 +1,5 @@
 {
-    "name": "sadikoff/device-detector",
+    "name": "koff/device-detector",
     "type": "library",
     "description": "The Universal Device Detection library, that parses User Agents and detects devices (desktop, tablet, mobile, tv, cars, console, etc.), clients (browsers, media players, mobile apps, feed readers, libraries, etc), operating systems, devices, brands and models.",
     "keywords": ["useragent","parser","devicedetection"],
@@ -35,12 +35,17 @@
         "sort-packages": true
     },
     "autoload": {
-        "psr-4": { "DeviceDetector\\": "src/" }
+        "psr-4": { "Koff\\DeviceDetector\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "DeviceDetector\\Tests\\": "tests/" }
+        "psr-4": { "Koff\\DeviceDetector\\Tests\\": "tests/" }
     },
     "suggest": {
         "doctrine/cache": "Can directly be used for caching purpose"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.x-dev"
+        }
     }
 }

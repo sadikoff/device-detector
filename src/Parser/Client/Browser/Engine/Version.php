@@ -1,21 +1,21 @@
 <?php
 
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Client\Browser\Engine;
 
-use DeviceDetector\Parser\Client\ClientParserAbstract;
+namespace Koff\DeviceDetector\Parser\Client\Browser\Engine;
+
+use Koff\DeviceDetector\Parser\Client\ClientParserAbstract;
 
 /**
- * Class Version
+ * Class Version.
  *
  * Client parser for browser engine version detection
- *
- * @package DeviceDetector\Parser\Client\Browser\Engine
  */
 class Version extends ClientParserAbstract
 {

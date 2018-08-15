@@ -9,8 +9,7 @@ $finder = PhpCsFixer\Finder::create()
 ;
 
 return PhpCsFixer\Config::create()
-    ->finder($finder)
-    ->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
+    ->setFinder($finder)
     ->setRules(array(
         '@Symfony' => true,
         '@Symfony:risky' => true,

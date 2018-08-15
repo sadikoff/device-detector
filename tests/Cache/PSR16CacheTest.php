@@ -5,9 +5,9 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Cache;
+namespace Koff\DeviceDetector\Tests\Cache;
 
-use DeviceDetector\Cache\PSR16Bridge;
+use Koff\DeviceDetector\Cache\PSR16Bridge;
 use MatthiasMullie\Scrapbook\Adapters\MemoryStore;
 use MatthiasMullie\Scrapbook\Psr16\SimpleCache;
 use PHPUnit\Framework\TestCase;

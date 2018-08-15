@@ -1,19 +1,17 @@
 <?php
 
-namespace DeviceDetector\Cache;
+namespace Koff\DeviceDetector\Cache;
 
 /**
- * Class StaticCache
+ * Class StaticCache.
  *
  * Simple Cache that caches in a static property
  * (Speeds up multiple detections in one request)
- *
- * @package DeviceDetector\Cache
  */
 class StaticCache implements DDCacheInterface
 {
     /**
-     * Holds the static cache data
+     * Holds the static cache data.
      *
      * @var array
      */

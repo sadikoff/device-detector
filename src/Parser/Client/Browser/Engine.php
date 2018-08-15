@@ -1,20 +1,20 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Client\Browser;
 
-use DeviceDetector\Parser\Client\ClientParserAbstract;
+namespace Koff\DeviceDetector\Parser\Client\Browser;
+
+use Koff\DeviceDetector\Parser\Client\ClientParserAbstract;
 
 /**
- * Class Engine
+ * Class Engine.
  *
  * Client parser for browser engine detection
- *
- * @package DeviceDetector\Parser\Client\Browser
  */
 class Engine extends ClientParserAbstract
 {
@@ -22,7 +22,7 @@ class Engine extends ClientParserAbstract
     protected $parserName = 'browserengine';
 
     /**
-     * Known browser engines mapped to their internal short codes
+     * Known browser engines mapped to their internal short codes.
      *
      * @var array
      */
@@ -39,11 +39,12 @@ class Engine extends ClientParserAbstract
         'KHTML',
         'NetFront',
         'Edge',
-        'NetSurf'
+        'NetSurf',
     );
 
     /**
-     * Returns list of all available browser engines
+     * Returns list of all available browser engines.
+     *
      * @return array
      */
     public static function getAvailableEngines()
@@ -64,7 +65,7 @@ class Engine extends ClientParserAbstract
             return '';
         }
 
-        $name  = $this->buildByMatch($regex['name'], $matches);
+        $name = $this->buildByMatch($regex['name'], $matches);
 
         foreach (self::getAvailableEngines() as $engineName) {
             if (strtolower($name) == strtolower($engineName)) {

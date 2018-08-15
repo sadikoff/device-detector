@@ -1,24 +1,29 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser\Device;
+
+namespace Koff\DeviceDetector\Parser\Device;
 
 /**
- * Class PortableMediaPlayer
+ * Class PortableMediaPlayer.
  *
  * Device parser for portable media player detection
- *
- * @package DeviceDetector\Parser\Device
  */
 class PortableMediaPlayer extends DeviceParserAbstract
 {
     protected $fixtureFile = 'regexes/device/portable_media_player.yml';
-    protected $parserName  = 'portablemediaplayer';
+    protected $parserName = 'portablemediaplayer';
 
+    /**
+     * @return bool
+     *
+     * @throws \Exception
+     */
     public function parse()
     {
         if (!$this->preMatchOverall()) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DeviceDetector\Cache;
+namespace Koff\DeviceDetector\Cache;
 
 use Psr\Cache\CacheItemPoolInterface;
 
@@ -13,6 +13,7 @@ class PSR6Bridge implements DDCacheInterface
 
     /**
      * PSR6Bridge constructor.
+     *
      * @param CacheItemPoolInterface $pool
      */
     public function __construct(CacheItemPoolInterface $pool)
@@ -21,16 +22,17 @@ class PSR6Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function fetch($id)
     {
         $item = $this->pool->getItem($id);
+
         return $item->isHit() ? $item->get() : false;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function contains($id)
     {
@@ -38,7 +40,7 @@ class PSR6Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function save($id, $data, $lifeTime = 0)
     {
@@ -47,11 +49,12 @@ class PSR6Bridge implements DDCacheInterface
         if (func_num_args() > 2) {
             $item->expiresAfter($lifeTime);
         }
+
         return $this->pool->save($item);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function delete($id)
     {
@@ -59,7 +62,7 @@ class PSR6Bridge implements DDCacheInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function flushAll()
     {

@@ -5,11 +5,11 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Tests\Parser;
+namespace Koff\DeviceDetector\Tests\Parser;
 
-use DeviceDetector\Parser\OperatingSystem;
+use Koff\DeviceDetector\Parser\OperatingSystem;
 use PHPUnit\Framework\TestCase;
-use DeviceDetector\Util\Yaml;
+use Koff\DeviceDetector\Util\Yaml;
 
 class OperatingSystemTest extends TestCase
 {

@@ -1,23 +1,23 @@
 <?php
 /**
- * Device Detector - The Universal Device Detection library for parsing User Agents
+ * Device Detector - The Universal Device Detection library for parsing User Agents.
  *
- * @link http://piwik.org
+ * @see http://piwik.org
+ *
  * @license http://www.gnu.org/licenses/lgpl.html LGPL v3 or later
  */
-namespace DeviceDetector\Parser;
+
+namespace Koff\DeviceDetector\Parser;
 
 /**
- * Class BotParserAbstract
+ * Class BotParserAbstract.
  *
  * Abstract class for all bot parsers
- *
- * @package DeviceDetector\Parser
  */
 abstract class BotParserAbstract extends ParserAbstract
 {
     /**
-     * Enables information discarding
+     * Enables information discarding.
      */
     abstract public function discardDetails();
 }
